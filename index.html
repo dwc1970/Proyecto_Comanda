@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tu Página</title>
+  <style type="text/css">
+    body {
+      margin: 0;
+    }
+
+    #interface {
+      width: 100%;
+      max-width: 400px;
+      height: 100vh;
+      margin: auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: url('img/resto.jpg') no-repeat center center fixed;
+      background-size: cover;
+      box-shadow: 1px 1px 10px #000;
+      border-radius: 25px;
+      overflow: hidden;
+    }
+
+    h1 {
+      padding: 20px;
+      color: #001f3f;
+    }
+
+    table {
+      border-style: dashed;
+      margin: auto;
+      width: 0;
+    }
+
+    th {
+      padding: 20px;
+      background-color: #001f3f;
+      color: #fff;
+      border-radius: 25px 25px 0 0; /* Mantén la esquina superior redondeada */
+    }
+
+    tr {
+      padding: 30px;
+    }
+
+    td {
+      padding: 5px 10px;
+    }
+
+    input {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    #total td {
+      padding-top: 50px;
+    }
+
+    #botao {
+      margin: 20px;
+      padding: 20px;
+      background-color: #001f3f;
+      color: #fff;
+    }
+
+    .item {
+      flex-grow: 1;
+    }
+
+    .item img {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+
+    .item a {
+      display: block;
+      border-radius: 25px;
+      overflow: hidden;
+    }
+
+    @media only screen and (max-width: 600px) {
+      #interface {
+        max-width: 100%;
+        border-radius: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="interface">
+    <!-- Contenido de tu página aquí -->
+    <h1>Bienvenido a tu página</h1>
+    <table>
+      <!-- Contenido de la tabla -->
+    </table>
+    <!-- Agregado un enlace alrededor de la imagen con tamaño ajustado -->
+    <div class="item">
+      <a href="pedido.html" target="_blank">
+        <img src="img/resto.jpg" alt="">
+      </a>
+    </div>
+  </div>
+</body>
+</html>

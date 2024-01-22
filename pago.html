@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <style type="text/css">
+    body {
+      background-color: #001f3f;
+      color: #fff;
+      margin: 0;
+    }
+
+    .contenedor {
+      width: 100%;
+      max-width: 400px;
+      margin: auto;
+      text-align: center;
+      background-color: #333;
+      box-shadow: 1px 1px 10px #000;
+      border-radius: 25px;
+      overflow: hidden;
+    }
+
+    h1 {
+      padding: 20px;
+      color: #001f3f;
+    }
+
+    .opcion {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 10px;
+    }
+
+    .opcion input {
+      margin-right: 5px;
+    }
+
+    table {
+      border-style: dashed;
+      margin: auto;
+      width: 100%;
+    }
+
+    th,
+    td {
+      padding: 10px;
+    }
+
+    input {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    #total td {
+      padding-top: 50px;
+    }
+
+    #botao {
+      margin: 20px;
+      padding: 20px;
+      background-color: #001f3f;
+      color: #fff;
+    }
+
+    .item img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .pedido-interface {
+      display: none;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .contenedor {
+        border-radius: 0;
+      }
+
+      table {
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="contenedor" id="opcionesPago">
+    <h1>Seleccione una opción de pago</h1>
+
+    <div class="opcion">
+      <input type="radio" id="pagoEfectivo" name="opcionPago" value="pagoEfectivo" />
+      <label for="pagoEfectivo">Pago en Efectivo</label>
+      <button type="button" onclick="confirmarPago('pagoEfectivo')">Seleccionar</button>
+    </div>
+
+    <div class="opcion">
+      <input type="radio" id="mercadoPago" name="opcionPago" value="mercadoPago" />
+      <label for="mercadoPago">MercadoPago</label>
+      <button type="button" onclick="confirmarPago('mercadoPago')">Seleccionar</button>
+    </div>
+
+    <div class="opcion">
+      <input type="radio" id="bnaPlus" name="opcionPago" value="bnaPlus" />
+      <label for="bnaPlus">BNA+</label>
+      <button type="button" onclick="confirmarPago('bnaPlus')">Seleccionar</button>
+    </div>
+
+    <div class="opcion">
+      <input type="radio" id="brubanck" name="opcionPago" value="brubanck" />
+      <label for="brubanck">BruBanck</label>
+      <button type="button" onclick="confirmarPago('brubanck')">Seleccionar</button>
+    </div>
+  </div>
+
+  <script>
+    function confirmarPago(opcion) {
+      if (opcion !== '') {
+        alert('Pago confirmado con: ' + opcion);
+      } else {
+        alert('Seleccione una opción de pago');
+      }
+    }
+  </script>
+</body>
+
+</html>

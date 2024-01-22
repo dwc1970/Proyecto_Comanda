@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <style type="text/css">
+    body {
+      background-color: #001f3f;
+      color: #fff;
+      margin: 0;
+    }
+
+    .contenedor {
+      width: 100%;
+      max-width: 400px;
+      margin: auto;
+      text-align: center;
+      background-color: #333;
+      box-shadow: 1px 1px 10px #000;
+      border-radius: 25px;
+      overflow: hidden;
+    }
+
+    h1 {
+      padding: 20px;
+      color: #001f3f;
+    }
+
+    table {
+      border-style: dashed;
+      margin: auto;
+      width: 100%;
+    }
+
+    th,
+    td {
+      padding: 10px;
+    }
+
+    input {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    #total td {
+      padding-top: 50px;
+    }
+
+    #botao {
+      margin: 20px;
+      padding: 20px;
+      background-color: #001f3f;
+      color: #fff;
+    }
+
+    .item img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .pedido-interface {
+      display: none;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .contenedor {
+        border-radius: 0;
+      }
+
+      table {
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="contenedor" id="interface">
+    <h1>Poner imagen/Imagen del Cliente</h1>
+
+    <table>
+      <tr>
+        <th>Pedido</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+      </tr>
+
+      <tr class="item porciones">
+        <td>
+          <img src="img/pafrita.png" alt="Papas fritas" />
+        </td>
+        <td>Papas fritas</td>
+        <td>$ 200,00</td>
+        <td><input type="number" min="0" value="0" /></td>
+      </tr>
+
+      <tr class="item porciones">
+        <td>
+          <img src="img/costillar.jpg" alt="Asado de Costilla" />
+        </td>
+        <td>Asado de Costilla</td>
+        <td>$ 500,00</td>
+        <td><input type="number" min="0" value="0" /></td>
+      </tr>
+      <tr class="item porciones">
+        <td>
+          <img src="img/ravioles.jpg" alt="Porcion de pastas" />
+        </td>
+        <td>Porcion de pastas</td>
+        <td>$ 370,00</td>
+        <td><input type="number" min="0" value="0" /></td>
+      </tr>
+      <tr class="item porciones">
+        <td>
+          <img src="img/empanada.jpg" alt="Empanadas" />
+        </td>
+        <td>Empanadas</td>
+        <td>$ 400,00</td>
+        <td><input type="number" min="0" value="0" /></td>
+      </tr>
+
+      <tr id="total">
+        <td colspan="4"></td>
+      </tr>
+    </table>
+    <button id="botao" type="button" name="button" onclick="mostrarPedido()">
+      Pedido
+    </button>
+  </div>
+
+  <div class="contenedor pedido-interface" id="pedidoInterface">
+    <h1>Detalle del Pedido</h1>
+    <table>
+      <tr>
+        <th>Pedido</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+      </tr>
+      <tbody id="detallePedido"></tbody>
+    </table>
+    <p id="precioFinal"></p>
+    <button id="opcionPago" onclick="abrirOpcionesPago()">Opciones de Pago</button>
+  </div>
+
+  <script src="javascript.js" charset="utf-8"></script>
+  <script>
+    function mostrarPedido() {
+      var items = document.querySelectorAll('.item.porciones');
+      var detallePedido = document.getElementById('detallePedido');
+      var precioFinal = document.getElementById('precioFinal');
+      var total = 0;
+      var pedidoHTML = '';
+
+      items.forEach(function (item) {
+        var nombre = item.children[1].innerText;
+        var precioUnitario = parseFloat(item.children[2].innerText.replace('$', ''));
+        var cantidad = parseFloat(item.children[3].children[0].value);
+        var subtotal = precioUnitario * cantidad;
+
+        total += subtotal;
+
+        pedidoHTML +=
+          '<tr><td>' +
+          nombre +
+          '</td><td>$' +
+          precioUnitario.toFixed(2) +
+          '</td><td>' +
+          cantidad +
+          '</td></tr>';
+      });
+
+      detallePedido.innerHTML = pedidoHTML;
+      precioFinal.innerText = 'Precio Final: $' + total.toFixed(2);
+
+      document.getElementById('interface').style.display = 'none';
+      document.getElementById('pedidoInterface').style.display = 'block';
+    }
+
+    function abrirOpcionesPago() {
+      window.location.href = 'pago.html';
+    }
+  </script>
+</body>
+
+</html>
